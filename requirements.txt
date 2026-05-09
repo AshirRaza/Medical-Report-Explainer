@@ -6,6 +6,8 @@ jiwer
 numpy
 pdf2image
 pillow
+paddleocr
+paddlepaddle
 python-dotenv
 ragas
 sentence-transformers
