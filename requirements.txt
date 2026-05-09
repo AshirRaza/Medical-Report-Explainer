@@ -1,0 +1,13 @@
+anthropic
+datasets
+faiss-cpu
+gradio
+jiwer
+numpy
+pdf2image
+pillow
+python-dotenv
+ragas
+sentence-transformers
+torch
+transformers
