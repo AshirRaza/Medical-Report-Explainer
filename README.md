@@ -12,15 +12,16 @@ This section describes **what exists in the repository today** and how to use it
 
 1. **PDF and image OCR via Qwen VL (OpenRouter)**  
    - `ocr/extract.py` converts PDF pages to images with [pdf2image](https://github.com/Belval/pdf2image) (requires **Poppler** on the system).  
+   - **Image quality before OCR:** default **300 DPI** rendering, optional **margin crop** (header/footer noise), **deskew** for mild page tilt, and **contrast boost** (`preprocess_image_for_ocr` / `extract_text_from_pdf` parameters).  
    - Each page image is sent to a **vision-language model** through the [OpenRouter](https://openrouter.ai) API using an OpenAI-compatible `chat/completions` flow, with the image as a base64 data URL.  
    - The model is configured via environment variables (see below). Default model name in `.env.example` is `qwen/qwen3-vl-32b-instruct`; you can point to another OpenRouter vision model if you prefer.
 
 2. **OCR evaluation on MedOCR Vision**  
    - `ocr/evaluate.py` loads the Hugging Face dataset [`naazimsnh02/medocr-vision-dataset`](https://huggingface.co/datasets/naazimsnh02/medocr-vision-dataset) and, for each sample, compares predictions to ground-truth text using **CER** and **WER** from [jiwer](https://github.com/jwerlinger/jiwer).  
    - **Two systems are evaluated:**  
-     - **Qwen path:** same OpenRouter-backed OCR as in `extract.py`.  
+     - **Qwen path:** same OpenRouter-backed OCR as in `extract.py` (including preprocessing when enabled in evaluation).  
      - **PaddleOCR baseline:** local PaddleOCR (PaddlePaddle + PaddleOCR stack on Windows).  
-   - Results are written to JSON (e.g. `ocr_evaluation_results.json`) with mean metrics and a relative **CER reduction %** vs Paddle when both runs succeed.
+   - Results are written to JSON under `Results/` (e.g. `ocr_evaluation_results.json`, `ocr_evaluation_results_latest.json`) with mean metrics and a relative **CER reduction %** vs Paddle when both runs succeed.
 
 3. **Environment and safety**  
    - `.env.example` lists required variables **without secrets** (safe to commit).  
@@ -71,13 +72,13 @@ python test_keys.py
 **OCR a PDF from Python (example: single PDF in `Sample Reports`):**
 
 ```powershell
-.\venv\Scripts\python -c "from pathlib import Path; from ocr.extract import load_qwen2vl, extract_text_from_pdf; pdfs=list(Path('Sample Reports').glob('*.pdf')); pdf=str(pdfs[0]); m,p=load_qwen2vl(); t=extract_text_from_pdf(pdf,m,p); print(t[:3000]); Path('ocr_output.txt').write_text(t, encoding='utf-8')"
+.\venv\Scripts\python -c "from pathlib import Path; from ocr.extract import load_qwen2vl, extract_text_from_pdf; Path('Results').mkdir(exist_ok=True); pdfs=list(Path('Sample Reports').glob('*.pdf')); pdf=str(pdfs[0]); m,p=load_qwen2vl(); t=extract_text_from_pdf(pdf,m,p); print(t[:3000]); Path('Results/ocr_output.txt').write_text(t, encoding='utf-8')"
 ```
 
 **Run MedOCR evaluation (Qwen + Paddle, 50 samples, require Paddle):**
 
 ```powershell
-.\venv\Scripts\python -m ocr.evaluate --num-samples 50 --require-paddle --output ocr_evaluation_results.json
+.\venv\Scripts\python -m ocr.evaluate --num-samples 50 --require-paddle --output Results/ocr_evaluation_results.json
 ```
 
 Use `--num-samples 10` for a quicker dry run. Use `--no-paddle` if you only want Qwen metrics.
@@ -91,6 +92,10 @@ Medical-Report-Explainer/
 ├── .gitignore
 ├── requirements.txt
 ├── test_keys.py         # verify .env loading
+├── Results/
+│   ├── ocr_evaluation_results.json        # baseline 50-sample run (archived)
+│   ├── ocr_evaluation_results_latest.json # run after OCR image-quality improvements
+│   └── results_summary.txt
 ├── ocr/
 │   ├── __init__.py      # re-exports extract helpers
 │   ├── extract.py       # PDF → images → OpenRouter Qwen OCR
@@ -106,9 +111,33 @@ Core entries in `requirements.txt` include: `anthropic`, `datasets`, `faiss-cpu`
 
 ### Evaluation notes (MedOCR)
 
-- **Mean CER ~0.5** on a 50-sample run indicates both Qwen (API) and Paddle still differ substantially from reference strings in strict character alignment—common when layout, spacing, or punctuation do not match ground truth exactly.  
-- In the same run, **Qwen showed lower mean CER and much lower mean WER than Paddle** on average; see `ocr_evaluation_results.json` for exact numbers.  
-- For reporting, emphasize **relative comparison** (Qwen vs Paddle) unless you add **normalization** before CER/WER to better match how humans judge “same text.”
+- Metrics are **strict** CER/WER (`jiwer`), so layout, spacing, and punctuation mismatches still inflate error rates.  
+- **Qwen vs Paddle:** Qwen remains better than the Paddle baseline on the same 50 samples.  
+- For reporting, you can cite **Qwen vs Paddle** and **Qwen before vs after preprocessing**; see the summary table below.
+
+### OCR evaluation summary (50 samples, MedOCR Vision)
+
+Two committed runs are stored for comparison (same dataset split, **50 scored samples**, same Paddle baseline numbers):
+
+| Run | File | Qwen mean CER | Qwen mean WER | Paddle mean CER | Paddle mean WER | CER reduction vs Paddle |
+|-----|------|---------------|---------------|-----------------|-----------------|-------------------------|
+| **Baseline** (Qwen on raw dataset images) | `Results/ocr_evaluation_results.json` | 0.5029 | 0.6425 | 0.5091 | 1.6043 | 1.22% |
+| **Improved** (Qwen after crop + deskew + contrast, same as `extract.py` helpers) | `Results/ocr_evaluation_results_latest.json` | **0.4730** | **0.6170** | 0.5091 | 1.6043 | **7.09%** |
+
+MedOCR images are already rasterized; **DPI changes apply to PDF OCR in `extract.py`**, not to dataset tiles. The gain here is from **spatial cleanup + contrast** before the vision model.
+
+**Improvement from preprocessing (Qwen only, same 50 scored samples):**
+
+- Mean CER: **0.5029 → 0.4730** (−0.0299, about **5.9%** lower relative to the baseline Qwen CER).  
+- Mean WER: **0.6425 → 0.6170** (−0.0255, about **4.0%** lower relative to the baseline Qwen WER).  
+- **Paddle metrics are unchanged** between the two JSON files, so the gain is from the **Qwen image pipeline**, not a different baseline run.
+
+Interpretation:
+
+- **Crop + deskew + contrast** measurably improved Qwen on this MedOCR slice; **PDF OCR** in `extract.py` also gains from **higher DPI** (300) on top of the same preprocessing.  
+- Absolute CER is still in the **high-0.4** range, so continue to treat numbers as **benchmark-relative** unless you add normalization for fairer human-style comparison.
+
+A short rolling log lives in `Results/results_summary.txt` (you can append future runs there).
 
 ### Known limitations and next steps
 

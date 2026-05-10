@@ -10,7 +10,7 @@ import numpy as np
 from datasets import load_dataset
 from jiwer import cer, wer
 
-from ocr.extract import load_qwen2vl, ocr_image
+from ocr.extract import load_qwen2vl, ocr_image, preprocess_image_for_ocr
 
 
 def _load_paddleocr_if_available():
@@ -60,7 +60,7 @@ def run_ocr_evaluation(
     num_samples: int = 50,
     compare_paddle: bool = True,
     require_paddle: bool = False,
-    output_path: str = "ocr_evaluation_results.json",
+    output_path: str = "Results/ocr_evaluation_results.json",
 ) -> dict[str, Any]:
     """
     Evaluate OCR on MedOCR Vision with CER/WER.
@@ -115,7 +115,9 @@ def run_ocr_evaluation(
 
         print(f"[OCR Eval] Sample {i}/{len(samples)}")
 
-        qwen_output = ocr_image(image, qwen_client, qwen_processor)
+        # Match PDF OCR pipeline: preprocess before Qwen (DPI is fixed at dataset resolution).
+        qwen_image = preprocess_image_for_ocr(image)
+        qwen_output = ocr_image(qwen_image, qwen_client, qwen_processor)
         qwen_cers.append(cer(ground_truth, qwen_output))
         qwen_wers.append(wer(ground_truth, qwen_output))
 
@@ -187,7 +189,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--output",
         type=str,
-        default="ocr_evaluation_results.json",
+        default="Results/ocr_evaluation_results.json",
         help="Path to save evaluation JSON.",
     )
     args = parser.parse_args()

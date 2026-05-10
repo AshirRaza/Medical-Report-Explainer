@@ -10,9 +10,10 @@ import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 
+import numpy as np
 from dotenv import load_dotenv
 from pdf2image import convert_from_path
-from PIL import Image
+from PIL import Image, ImageEnhance, ImageOps
 
 load_dotenv()
 
@@ -103,7 +104,7 @@ class QwenOCRClient:
         raise RuntimeError(f"Qwen OCR API failed after retries: {last_err}")
 
 
-def pdf_to_images(pdf_path: str, dpi: int = 200) -> list[Image.Image]:
+def pdf_to_images(pdf_path: str, dpi: int = 300) -> list[Image.Image]:
     """
     Convert each PDF page into PIL images.
     Set POPPLER_PATH in .env on Windows when poppler is not on PATH.
@@ -112,6 +113,66 @@ def pdf_to_images(pdf_path: str, dpi: int = 200) -> list[Image.Image]:
     pages = convert_from_path(pdf_path, dpi=dpi, poppler_path=poppler_path)
     print(f"[OCR] Converted {len(pages)} page(s) from {pdf_path}")
     return pages
+
+
+def _crop_by_ratio(
+    image: Image.Image,
+    left_ratio: float,
+    right_ratio: float,
+    top_ratio: float,
+    bottom_ratio: float,
+) -> Image.Image:
+    width, height = image.size
+    left = int(width * max(0.0, left_ratio))
+    right = int(width * min(1.0, 1.0 - right_ratio))
+    top = int(height * max(0.0, top_ratio))
+    bottom = int(height * min(1.0, 1.0 - bottom_ratio))
+    if right - left < 50 or bottom - top < 50:
+        return image
+    return image.crop((left, top, right, bottom))
+
+
+def _estimate_skew_angle(image: Image.Image) -> float:
+    """
+    Estimate small skew by maximizing horizontal projection variance.
+    Optimized for scanned text pages with mild tilt.
+    """
+    gray = ImageOps.grayscale(image)
+    best_angle = 0.0
+    best_score = -1.0
+    for angle in np.arange(-2.0, 2.1, 0.5):
+        rotated = gray.rotate(angle, expand=False, fillcolor=255)
+        arr = np.array(rotated, dtype=np.uint8)
+        binary = (arr < 190).astype(np.uint8)  # dark text mask
+        row_sums = binary.sum(axis=1)
+        score = float(np.var(row_sums))
+        if score > best_score:
+            best_score = score
+            best_angle = float(angle)
+    return best_angle
+
+
+def preprocess_image_for_ocr(
+    image: Image.Image,
+    apply_deskew: bool = True,
+    contrast_factor: float = 1.35,
+    crop_margins: tuple[float, float, float, float] = (0.02, 0.02, 0.06, 0.06),
+) -> Image.Image:
+    """
+    Improve OCR readability with optional cropping, deskewing, and contrast boost.
+
+    crop_margins order: (left, right, top, bottom) as ratios of full image size.
+    """
+    processed = image.convert("RGB")
+    left, right, top, bottom = crop_margins
+    processed = _crop_by_ratio(processed, left, right, top, bottom)
+    if apply_deskew:
+        angle = _estimate_skew_angle(processed)
+        if abs(angle) >= 0.5:
+            processed = processed.rotate(angle, expand=False, fillcolor="white")
+    if contrast_factor > 1.0:
+        processed = ImageEnhance.Contrast(processed).enhance(contrast_factor)
+    return processed
 
 
 def load_qwen2vl(quantize: bool = True) -> tuple[QwenOCRClient, dict[str, str]]:
@@ -159,15 +220,31 @@ def ocr_image(pil_image: Image.Image, model: QwenOCRClient, processor: dict[str,
     return model.transcribe_image(_pil_to_base64_png(pil_image))
 
 
-def extract_text_from_pdf(pdf_path: str, model: QwenOCRClient, processor: dict[str, str]) -> str:
+def extract_text_from_pdf(
+    pdf_path: str,
+    model: QwenOCRClient,
+    processor: dict[str, str],
+    dpi: int = 300,
+    apply_preprocessing: bool = True,
+    apply_deskew: bool = True,
+    contrast_factor: float = 1.35,
+    crop_margins: tuple[float, float, float, float] = (0.02, 0.02, 0.06, 0.06),
+) -> str:
     """
     Full OCR flow: PDF -> page images -> OCR per page -> merged text.
     """
-    images = pdf_to_images(pdf_path)
+    images = pdf_to_images(pdf_path, dpi=dpi)
     full_text = []
     total = len(images)
     for i, image in enumerate(images, start=1):
         print(f"[OCR] Processing page {i}/{total}...")
+        if apply_preprocessing:
+            image = preprocess_image_for_ocr(
+                image,
+                apply_deskew=apply_deskew,
+                contrast_factor=contrast_factor,
+                crop_margins=crop_margins,
+            )
         page_text = ocr_image(image, model, processor)
         full_text.append(f"--- Page {i} ---\n{page_text}")
     return "\n\n".join(full_text).strip()
