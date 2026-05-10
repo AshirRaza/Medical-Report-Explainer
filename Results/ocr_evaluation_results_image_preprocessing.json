@@ -1,0 +1,16 @@
+{
+  "dataset": "naazimsnh02/medocr-vision-dataset",
+  "samples_requested": 50,
+  "samples_scored": 50,
+  "qwen_api": {
+    "mean_CER": 0.473,
+    "mean_WER": 0.617
+  },
+  "paddleocr": {
+    "mean_CER": 0.5091,
+    "mean_WER": 1.6043
+  },
+  "improvement": {
+    "CER_reduction_percent": 7.09
+  }
+}
