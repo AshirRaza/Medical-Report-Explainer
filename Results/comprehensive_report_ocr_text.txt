@@ -1,0 +1,1324 @@
+--- Page 1 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : EDTA Blood  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:09 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Complete Blood Count  
+
+Test Result Unit Biological Ref. Interval  
+Hemoglobin Colorimetric 14.5 g/dL 13.0 - 16.5  
+RBC Count Electrical impedance 4.79 million/cmm 4.5 - 5.5  
+Hematocrit Calculated 43.3 % 40 - 49  
+MCV Derived 90.3 fL 83 - 101  
+MCH Calculated 30.2 pg 27.1 - 32.5  
+MCHC Calculated 33.4 g/dL 32.5 - 36.7  
+RDW CV Calculated 13.60 % 11.6 - 14  
+
+Total WBC and Differential Count  
+WBC Count SF Cube cell analysis H 10570 /cmm 4000 - 10000  
+
+Differential Count  
+Neutrophils Microscopic 73 % 40 - 80  
+Lymphocytes Microscopic 19 % 20 - 40  
+Eosinophils Microscopic 02 % 1 - 6  
+Monocytes Microscopic 06 % 2 - 10  
+Basophils Microscopic 00 % 0 - 2  
+
+Absolute Count  
+7716 /cmm 2000 - 6700  
+2008 /cmm 1100 - 3300  
+211 /cmm 00 - 400  
+634 /cmm 200 - 700  
+0 /cmm 0 - 100  
+
+Platelet Count Electrical impedance 150000 /cmm 150000 - 410000  
+MPV Calculated H 14.00 fL 7.5 - 10.3  
+
+Peripheral Smear Examination  
+RBC Morphology Normochromic Normocytic  
+WBC Morphology WBCs Series Shows Normal Morphology  
+Platelets Morphology Platelets are adequate with normal morphology.  
+Parasites Malarial parasite is not detected.  
+
+Erythrocyte Sedimentation Rate  
+ESR Capillary photometry 7 mm/1hr 0 - 14  
+
+DR.TEJASWINI DHOTE  
+M.D. Pathology  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 1 of 19
+
+--- Page 2 ---
+ACCURIS  
+Pathology lab that cares  
+
+Scan QR code to check  
+report authenticity  
+
+LABORATORY TEST REPORT  
+
+Passport No :  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : EDTA Blood, Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 13:33 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Blood Group  
+
+Test Result Unit Biological Ref. Interval  
+ABO Type "A"  
+Rh (D) Type Positive  
+
+Dhote  
+DR.TEJASWINI DHOTE  
+M.D. Pathology  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 2 of 19
+
+--- Page 3 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:29 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Lipid Profile  
+
+Test Result Unit Biological Ref. Interval  
+Cholesterol  
+Cholesterol oxidase – Peroxidase method  
+189.0 mg/dL  
+Desirable : <200  
+Borderline High : 200-239  
+High : >240  
+
+Triglyceride  
+Ezymatic (Lipase/GK/GPO/POD)  
+H 168.0 mg/dL  
+Normal : <150  
+Borderline : 150-199  
+High : 200-499  
+Very High : >500  
+
+HDL Cholesterol  
+PTA/MgCl2  
+60.0 mg/dL  
+Low: <40.0  
+High: >60.0  
+
+Direct LDL  
+Direct measured  
+H 100.39 mg/dL  
+Optimal: <100  
+Near to above Optimal: 100–129  
+Borderline High: 130-159  
+High: 160–189  
+Very High: =190  
+
+VLDL  
+Calculated  
+33.60 mg/dL  
+15 - 35  
+
+CHOL/HDL Ratio  
+Calculated  
+3.1 Up to 5.0  
+
+LDL/HDL Ratio  
+Calculated  
+1.7 Up to 3.5  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test Page 3 of 19
+
+--- Page 4 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Fluoride plasma  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:45 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Biochemistry  
+
+Test Result Unit Biological Ref. Interval  
+Fasting Blood Sugar H 141.0 mg/dL 74 - 106  
+GOD-POD  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr. Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test Page 4 of 19
+
+--- Page 5 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : EDTA Blood  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:33 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+HbA1c (Glycosylated Hemoglobin)  
+
+Test Result Unit Biological Ref. Interval  
+HbA1c H 7.10 % For Screening:  
+High Performance Liquid Chromatography Diabetes: >6.5%  
+Pre-Diabetes: 5.7% - 6.4%  
+Non-Diabetes: < 5.7%  
+For Diabetic Patient:  
+Poor Control : > 7.0 %  
+Good Control : 6.0-7.0 %  
+
+Mean Blood Glucose 157.07 mg/dL  
+Calculated  
+
+Explanation:-  
+• Total haemoglobin A1 c is continuously synthesized in the red blood cell throught its 120 days life span. The concentration of HBA1c in the cell reflects the average blood glucose concentration it encounters.  
+• The level of HBA1c increases proportionately in patients with uncontrolled diabetes. It reflects the average blood glucose concentration over an extended time period and remains unaffected by short-term fluctuations in blood glucose levels.  
+• The measurement of HbA1c can serve as a convenient test for evaluating the adequacy of diabetic control and in preventing various diabetic complications. Because the average half life of a red blood cell is sixty days, HbA1c has been accepted as a measurement which reflects the mean daily blood glucose concentration, better than fasting blood glucose determination, and the degree of carbohydrate imbalance over the preceding two months.  
+• It may also provide a better index of control of the diabetic patient without resorting to glucose loading procedures.  
+
+HbA1c assay Interferences:  
+Erroneous values might be obtained from samples with abnormally elevated quantities of other Haemoglobins as a result of either their simultaneous elution with HbA1c (HbF) or differences in their glycation from that of HbA (HbS).  
+
+Reference: ADA Guideline 2023  
+
+DR.TEJASWINI DHOTE  
+M.D. Pathology  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 5 of 19
+
+--- Page 6 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:38 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Thyroid Function Test  
+
+Test Result Unit Biological Ref. Interval  
+T3 - Triiodothyronine 1.01 ng/mL 0.58 - 1.59  
+Chemiluminescence  
+T4 - Thyroxine 7.84 mg/mL 4.87 - 11.72  
+TSH - Thyroid Stimulating Hormone 0.8199 microIU/mL 0.35 - 4.94  
+Chemiluminescence  
+
+TSH T3/FT3 T4/FT4 Suggested Interpretation for the Thyroid Function Tests Pattern  
+Within Range Decreased Within Range - Isolated Low T3-often seen in elderly & associated Non-Thyroidal illness. In elderly the drop in T3 level can be upto 25%  
+Raised Within Range Within Range - Isolated High TSH especially in the range of 4.7 to 15 mIU/ml is commonly associated with physiological & Biological TSH Variability.  
+- Subclinical Autoimmune Hypothyroidism  
+- Interrupted T4 therapy for hypothyroidism  
+- Recovery phase after Non-Thyroidal illness  
+Raised Decreased Decreased - Chronic autoimmune Thyroiditis  
+- Post thyroidectomy, Post radioiodine  
+- Hypothyroid phase of transient thyroiditis  
+Raised or Within Range Raised Raised or Within range - Interfering antibodies to thyroid hormones (anti-TPO antibodies)  
+- Intermittent T4 therapy or T4 overdose  
+- Drug interference-Amiodarone, Heparin, Beta blockers, steroids, anti-epileptics  
+Decreased Raised or within Range Raised or within Range - Isolated Low TSH - especially in the range of 0.1 to 0.4 often seen in elderly & associated with Non-Thyroidal illness  
+- Subclinical Hyperthyroidism  
+- Thyroxine ingestion  
+Decreased Decreased Decreased - Central Hypothyroidism  
+- Non-Thyroidal illness  
+- Recent treatment for Hyperthyroidism (TSH remains suppressed)  
+Decreased Raised Raised - Primary Hyperthyroidism (Graves disease), Multinodular goitre Toxic nodule  
+- Transient thyroiditis:Postpartum, Silent (lymphocytic), Postviral (granulomatous, subacute, DeQuervain's) Gestational thyrotoxicosis with hyperemesis gravidarum  
+Decreased or within range Raised Within Range - T3 toxicosis  
+- Non-Thyroidal illness  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 6 of 19
+
+--- Page 7 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Urine  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 12:40 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Biochemistry  
+
+Test Result Unit Biological Ref. Interval  
+Microalbumin (per urine volume) 10.50 mg/L < 16.7  
+Immunoturbidimetric  
+
+In random urine specimens, normal urinary albumin excretion is below 17 mg/g creatinine for males and below 25 mg/g creatinine for females.(3)  
+Microalbuminuria is defined as an albumin:creatinine ratio of 17 to 299 for males and 25 to 299 for females.  
+A ratio of albumin:creatinine of 300 or higher is indicative of overt proteinuria.  
+Due to biologic variability, positive results should be confirmed by a second, first-morning random or 24-hour timed urine specimen. If there is discrepancy, a third specimen is recommended. When 2 out of 3 results are in the microalbuminuria range, this is evidence for incipient nephropathy and warrants increased efforts at glucose control, blood pressure control, and institution of therapy with an angiotensin-converting-enzyme (ACE) inhibitor (if the patient can tolerate it).  
+
+Reference :  
+1. Bennett PH, Haffner S, Kasiske BL, et al: Screening and management of microalbuminuria in patients with diabetes mellitus: recommendations to the Scientific Advisory Board of the National Kidney Foundation from an ad hoc committee of the Council on Diabetes Mellitus of the National Kidney Foundation. Am J Kidney Dis 1995;25:107-112  
+2. Krolewski AS, Laffel LM, Krolewski M, et al: Glycosylated hemoglobin and the risk of microalbuminuria in patients with insulin-dependent diabetes mellitus. N Engl J Med 1995;332:1251-1255  
+3. Zelmanovitz T, Gross JL, Oliveira JR, et al: The receiver operating characteristics curve in the evaluation of a random urine specimen as a screening test for diabetic nephropathy. Diabetes Care 1997;20:516-519  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr. Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 7 of 19
+
+--- Page 8 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+LABORATORY TEST REPORT  
+
+Passport No :  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:41 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Protein  
+
+Test Result Unit Biological Ref. Interval  
+Total Protein 7.00 g/dL 6.3 - 8.2  
+Copper tartrate to colour complex  
+Albumin 4.20 g/dL 3.5 - 5.0  
+Bromocresol Green Method  
+Globulin 2.80 g/dL 2.3 - 3.5  
+Calculated  
+A/G Ratio 1.50 1.3 - 1.7  
+Calculated  
+
+Bilirubin  
+
+Total Bilirubin 0.70 mg/dL 0.2 - 1.3  
+Azobilirubin chromophores  
+Conjugated Bilirubin 0.30 mg/dL 0.0 - 0.3  
+Cationic Mordant Binding  
+Unconjugated Bilirubin 0.20 mg/dL 0.0 - 1.1  
+Cationic Mordant Binding  
+Delta Bilirubin 0.20 mg/dL 0.0 - 0.2  
+Calculated  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr. Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 8 of 19
+
+--- Page 9 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:29 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Iron Studies  
+
+Test                      Result      Unit             Biological Ref. Interval  
+Iron                      103.00      micro g/dL       49 - 181  
+Pyridyl azo Dye  
+Total Iron Binding Capacity (TIBC)  352.00      261 - 462  
+Transferrin Saturation    29.26       %                Children : >16  
+Calculated                                  Adult : 20 - 50  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 9 of 19
+
+--- Page 10 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:38 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Immunoassay  
+
+Test Result Unit Biological Ref. Interval  
+Homocysteine, Serum H 23.86 micromol/L 6.0 - 14.8  
+Chemiluminescence  
+
+Summary and Uses:  
+• Total Hcy is a thiol-containing amino acid, produced by the intracellular demethylation of methionine to cysteine.  
+• Elevated levels of t Hcy may be used to exclude or confirm deficiencies of vitamin B12 or folate.  
+• It is recommended to test in patients using medications that interfere with folate status (methotrexate, antiepileptics), vegetarians without B12 supplements, unexplained anemia, peripheral neuropathy or myleopathy, recurrent spontaneous abortions or infertility.  
+• Testing also recommended for patients 40 years of age with coronary artery disease to exclude homocystinuria.  
+• Elevations in tHcy levels have also been used as an independent risk factor of coronary or cerebral vascular disease. Treatment of moderate hyperhomocystinemia with folic acid supplementation for primary and secondary cardiovascular protection has met with inconsistent results and at present cannot be routinely recommended.  
+
+Limitations:  
+• The plasma must be seprated immediately on collection to avoid continuous synthesis of Hcy by red cells.  
+• Samples must be immediately stored on ice and serum centrifuged immediately before a complete clot is formed.  
+• Certain drugs, such as anticonvulsants, methotrexate, or nitrous oxide, may interfere with the assay.  
+• Cigarette smoking and coffee consumption increase tHcy levels.  
+• Intraindividual variability is approximately 8%; it can be as much as 25% in patients with hyperhomocystinemia.  
+• Generally, a single measurement of tHcy is considered adequate.  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test Page 10 of 19
+
+--- Page 11 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:10 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Biochemistry  
+
+Test Result Unit Biological Ref. Interval  
+Creatinine, Serum 0.83 mg/dL 0.66 - 1.25  
+Creatinine Amidohydrolase  
+Urea L 18.0 mg/dL 19.3 - 43.0  
+Urease, Colorimetric  
+Blood Urea Nitrogen L 8.41 mg/dL 9.0 - 20.0  
+Calculated  
+Uric Acid 4.90 mg/dL 3.5 - 8.5  
+Uricase  
+Calcium 9.10 mg/dL 8.4 - 10.2  
+Arsenazo III  
+SGPT 48.0 U/L 0 - 50  
+UV with P5P, IFCC  
+SGOT 27.0 U/L 17 - 59  
+UV with P5P  
+
+Electrolytes  
+
+Sodium (Na+) 143.00 mmol/L 136 - 145  
+Direct- ISE  
+Potassium (K+) 4.90 mmol/L 3.5 - 5.1  
+Direct- ISE  
+Chloride (Cl-) 105.0 mmol/L 98 - 107  
+Direct- ISE  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test Page 11 of 19
+
+--- Page 12 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 12:33 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Immunoassay  
+
+Test Result Unit Biological Ref. Interval  
+25(OH) Vitamin D 8.98 ng/mL Deficiency : <10  
+CLIA Insufficiency : 10 - 30  
+Sufficiency : 30 - 100  
+Toxicity : >100  
+
+Vitamin D is a fat soluble vitamin and exists in two main forms as cholecalciferol(vitamin D3) which is synthesized in skin from 7-dehydrocholesterol in response to sunlight exposure & Ergocalciferol(vitamin D2) present mainly in dietary sources. Both cholecalciferol & Ergocalciferol are converted to 25(OH)vitamin D in liver.  
+
+Interpretation:  
+Increased In  
+• Vitamin D intoxication  
+• Excessive exposure to sunlight  
+
+Decreased In  
+• Malabsorption  
+• Steatorrhea  
+• Dietary osteomalacia, anticonvulsant osteomalacia  
+• Biliary and portal cirrhosis  
+• Thyrotoxicosis  
+• Pancreatic insufficiency  
+• Celiac disease  
+• Rickets  
+• Alzheimer disease  
+
+Limitations:  
+More recently, it has become clear that receptors for vitamin D are present in a wide variety of cells and that this hormone has biologic effects extending beyond the control of mineral metabolism. Vitamin D deficiency is not clear. Levels needed to prevent rickets and osteomalacia (15 ng/mL) are lower than those that dramatically suppress parathyroid hormone levels (20–30 ng/mL). In turn, those levels are lower than levels needed to optimize intestinal calcium absorption (34 ng/mL). Neuromuscular peak performance is associated with levels approximately 38 ng/mL. A recent study states that increasing mean baseline levels from 29 to 38 ng/mL was associated with a 50% lower risk for colon cancer and levels of 52 ng/mL with a 50% reduction in the incidence of breast cancer. It is recommended to have clinical correlation with serum 25(OH)vitamin D, serum calcium, serum PTH & serum alkaline phosphatase.  
+
+Dhote  
+DR.TEJASWINI DHOTE  
+M.D. Pathology  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 12 of 19
+
+--- Page 13 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+LABORATORY TEST REPORT  
+
+Passport No :  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 12:04 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Immunoassay  
+
+Test Result Unit Biological Ref. Interval  
+Vitamin B12 L < 148 pg/mL 187 - 833  
+CLIA  
+
+Vitamin B12 is essential in DNA synthesis, hematopoiesis, and CNS integrity.  
+
+Interpretation:  
+• Increased In : Chronic granulocytic leukemia, COPD and Chronic renal failure, Leukocytosis, Liver cell damage (hepatitis, cirrhosis), Obesity and Severe CHF, Polycythemia vera, Protein malnutrition.  
+• Decreased In : Abnormalities of cobalamin transport or metabolism, Bacterial overgrowth, Crohn disease, Dietary deficiency (e.g. in vegetarians), Diphyllobothrium (fish tapeworm) infestation, Gastric or small intestine surgery, Hypochlorhydria, Inflammatory bowel disease, Intestinal malabsorption and Intrinsic factor deficiency  
+
+Limitations:  
+• Drugs such as chloral hydrate increase vitamin B12 levels. On the other hand, alcohol, aminosalicylic acid, anticonvulsants, ascorbic acid, cholestyramine, cimetidine, colchicines, metformin, neomycin, oral contraceptives, ranitidine, and triamterene decrease vitamin B12 levels.  
+• The evaluation of macrocytic anemia requires measurements of both vitamin B12 and folate levels; ideally they should be measured simultaneously.  
+• Specimen collection soon after blood transfusion can falsely increase vitamin B12 levels.  
+• Patients taking vitamin B12 supplementation may have misleading results.  
+• A normal serum concentration of B12 does not rule out tissue deficiency of vitamin B12. The most sensitive test for B12 deficiency at the cellular level is the assay for MMA. If clinical symptoms suggest deficiency, measurement of MMA and homocysteine should be considered, even if serum B12 concentrations are normal.  
+
+DR.TEJASWINI DHOTE  
+M.D. Pathology  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 13 of 19
+
+--- Page 14 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:38 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Immunoassay  
+
+Test Result Unit Biological Ref. Interval  
+PSA-Prostate Specific Antigen, Total 0.573 ng/mL 0 - 4  
+
+PSA is a glycoprotein that is expresses by both normal and neoplastic prostate tissue and is prostate tissue specific and not prostate cancer specific. PSA is constantly expressed in nearly all prostate cancers, although its level of expression on a percent basis is lower than in normal prostate epithelium. The absolute value of serum PSA is useful for determining the extent of prostate cancer and assessing the response to prostate cancer treatment; its use as a screening method to detect prostate cancer is also common.  
+
+Interpretation  
+Increased in  
+• Prostate disease (Cancer, Prostatitis, Benign prostatic hyperplasia, Acute urinary retention)  
+• Manipulations ( Cystoscopy, Needle biopsy, Radiation therapy, Indwelling catheter, Prostatic massage)  
+• Transurethral resection  
+• Prostatic ischemia  
+
+Decreased in  
+• Castration  
+• Prostatectomy  
+• Radiation therapy  
+• Ejaculation withi 24 - 48 hours  
+• 5-alpha-reductase inhibitor reduces PSA by 50% after 6 months in men without cancer  
+
+Limitations  
+• PSA has been recommended by the American Cancer Society for use in conjunction with a DRE for early detection of prostate cancer starting at the age of 50 years for men with at least 10 year life expectancy  
+• PSA levels that are measured repeatedly over time may vary because of biologic variability where the true PSA level in a given man is different on different measurements.  
+• A change in PSA of >30% in man with a PSA initially below 2.0 ng/mL was likely to indicate a true change beyond normal random variation.  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test Page 14 of 19
+
+--- Page 15 ---
+Scan QR code to check  
+report authenticity  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 12:06 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Immunoassay  
+
+Test Result Unit Biological Ref. Interval  
+IgE H 492.30 IU/mL 0 - 87  
+CLIA  
+
+IgE mediates allergic and hypersensitivity reactions. There is a significant overlap in total IgE between allergic and nonallergic individuals.  
+
+Interpretation:  
+- Increased In  
+  • Atopic diseases  
+    ◦ Exogenous asthma in approximately 60% of patients  
+    ◦ Hay fever in approximately 30% of patients and Atopic eczema  
+  • Influenced by type of allergen, duration of stimulation. Presence of symptoms, and hyposensitization treatment  
+  • Parasitic diseases (e.g. ascariasis, visceral larva migrans, hookworm disease, schistosomiasis, Echinococcus infestation)  
+  • Monoclonal IgE myeloma  
+- Decreased In  
+  • Hereditary deficiencies  
+  • Acquired immunodeficiency  
+  • Ataxia-telangiectasis  
+  • Non-IgE myeloma  
+
+Limitations:  
+• A normal level of IgE in serum does not eliminate the possibility of allergic disease.  
+• Serum total IgE levels for the majority of individuals with IgE-mediated disease can be expected to be elevated compared to the reference range for healthy adults. However, not all allergic patients exhibit elevated serum total IgE levels.  
+• Since not all atopic reactions are IgE-mediated, a total IgE result in the reference range should always be interpreted in light of other clinical observations.  
+• Heterophilic antibodies in human serum can react with the immunoglobulins included in the assay components causing interference with in vitro immunoassays.  
+
+Dr. Purvish Darji  
+MD(Path)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr. Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 15 of 19
+
+--- Page 16 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Serum  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 14:35 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Test  
+HIV I & II Ab/Ag with P24 Ag  
+Chemiluminescence  
+Interpretation  
+HBsAg  
+Chemiluminescence  
+Interpretation  
+
+Result  
+0.070  
+Non Reactive  
+0.290  
+Non Reactive  
+
+Unit  
+S/Co  
+S/Co  
+
+Biological Ref. Interval  
+Non Reactive : <1.0  
+Reactive : >1.0  
+Non Reactive : <1.0  
+Reactive: >1.0  
+
+Additional Information:  
+1. A NON REACTIVE result implies that no Anti HIV-1 or HIV -2 antibodies have been detected in the sample by this method. This means that either the patient has not been exposed to HIV-1 or HIV-2 infection or the sample has been tested during the "WINDOW PHASE" (before the development of detectable levels of antibodies).  
+2. A PROVISIONALITY REACTIVE / BORDERLINE REACTIVE result suggests possibility of HIV-1 or/and HIV-2 infection. However these results must be verified by confirmatory WESTERN BLOT / HIV PCR method before declaring the patient positive for HIV-1 or HIV-2 infection.  
+3. Very high levels of IgM Antibodies or Anti-HLA ABC and DR Antibodies can give false positive reaction.  
+**Pre & Post test counselling for HIV testing is responsibility of referring Physician.  
+
+Dr. Siddharth Thummar  
+M.D. Pathology  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr. Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 16 of 19
+
+--- Page 17 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+LABORATORY TEST REPORT  
+
+Passport No :  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : EDTA Blood  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 14:16 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+HB Electrophoresis By HPLC  
+Instrument Name: BIORAD VARIANT - II Haemoglobin Testing System  
+
+Test Result Unit Biological Ref. Interval  
+Hb A L 84.4 % 96.8 - 97.8  
+Hb A2 2.8 % 2.2 - 3.2  
+P2 Peak 5.5 %  
+P3 Peak 5.2 %  
+Foetal Hb 0.3 % 0.0 - 1.0  
+
+Interpretation  
+Negative for typical beta thalassemia trait.  
+
+Interpretation:  
+• All results have to be correlated with age and history of blood transfusion if there is history of blood transfusion in last 3 months, repeat testing after 3 month from last date of transfusion is recommended.  
+• In case of haemoglobinopathy, parents or family studies and counselling is advised.  
+• This test detects beta thalassaemia and haemoglobinopathies, DNA analysis is recommended to rule out alpha thalassaemia and silent carriers.  
+• Linearity range of HbF is 1-40%, However, values in excess of the reportable range have been provided for ease of interpretation.  
+• Mild to moderate increase in fetal haemoglobin can be seen in some acquired condition like pregnancy, megaloblastic anaemia, Throtoxicosis, Hypoxia, Chronic kidney disease, Recovering marrow, MDS, Aplastic anaemia, PNH, Medications (Hydroxyurea, Erythropoietin) ect.  
+• P3 window-Above 10% is often indicative of either denatured forms of hemoglobins or may suggest a possibility of abnormal haemoglobin variant. Hence, repeat analysis with fresh sample or DNA studies is advised.  
+• P2 Window-Above 10% is indicative of either glycated haemoglobin requiring correlation with diabetic status or may suggest a possibility of abnormal haemoglobin variant further DNA studies for confirmation.  
+
+Dr. Hardik Modi  
+Hematopathologist (G-18097)  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr. Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 17 of 19
+
+--- Page 18 ---
+Patient Data  
+Sample ID: 022321600126  
+Patient ID:  
+Name:  
+Physician:  
+Sex:  
+DOB:  
+Comments:  
+
+Analysis Data  
+Analysis Performed: 02/20/2023 13:56:59  
+Injection Number: 2575  
+Run Number: 95  
+Rack ID: 0001  
+Tube Number: 2  
+Report Generated: 02/20/2023 14:04:40  
+Operator ID:  
+
+Peak Name       Calibrated Area %   Area %   Retention Time (min)   Peak Area  
+Unknown         ---                 0.1      1.00                   2400  
+F               0.3               ---      1.08                   8321  
+Unknown         ---                 1.6      1.18                   44109  
+P2              ---                 5.5      1.30                   148807  
+P3              ---                 5.2      1.72                   139183  
+Ao              ---                 84.4     2.34                   2277592  
+A2              2.8               ---      3.64                   76999  
+
+Total Area: 2,697,411  
+
+F Concentration = 0.3 %  
+A2 Concentration = 2.8 %  
+
+Analysis comments:  
+
+45.0  
+37.5  
+30.0  
+22.5  
+15.0  
+7.5  
+0.0  
+0     1     2     3     4     5     6  
+Time (min.)  
+
+ACCURIS  
+Pathology lab that cares
+
+--- Page 19 ---
+Scan QR code to check  
+report authenticity  
+
+MC-2202  
+
+ACCURIS  
+Pathology lab that cares  
+
+Passport No :  
+LABORATORY TEST REPORT  
+
+Patient Information  
+Name : Lyubochka Svetka  
+Sex/Age : Male / 41 Y 01-Feb-1982  
+Ref. Id :  
+Ref. By :  
+
+Sample Information  
+Lab Id : 02232160XXXX  
+Registration on : 20-Feb-2023 09:10  
+Collected at : non SAWPL  
+Collected on : 20-Feb-2023 08:53  
+Sample Type : Urine  
+
+Client/Location Information  
+Client Name : Sterling Accuris Buddy  
+Location :  
+Approved on : 20-Feb-2023 11:12 Status : Final  
+Printed On : 28-Feb-2023 10:26  
+Process At : 1. NRL SAWPL Gujarat Ahmedabad Paldi  
+
+Test  
+Result  
+Unit  
+Biological Ref. Interval  
+
+Physical & Chemical (Dip strip) examination  
+Colour  
+Pale Yellow  
+Pale Yellow  
+Clarity  
+Clear  
+Clear  
+pH  
+Double indicator  
+6.0  
+4.6 - 8.0  
+Specific Gravity  
+Polyelectrolyte based reaction  
+1.030  
+1.005 - 1.030  
+Urine Glucose  
+GOD-POD  
+Present (+)  
+Absent  
+Urine Protein  
+Protein error of indicators  
+Absent  
+Absent  
+Bilirubin  
+Diazo reaction  
+Absent  
+Absent  
+Urobilinogen  
+Modified Ehrlich reaction  
+Absent  
+Absent  
+Urine Ketone  
+Nitroprusside  
+Absent  
+Absent  
+Nitrite  
+Nitrite reaction  
+Absent  
+Absent  
+
+Microscopic Examination  
+Pus Cells  
+1-2  
+Absent  
+Red Cells  
+Nil  
+/hpf  
+0 - 2  
+Epithelial Cells  
+1-2  
+/hpf  
+.  
+Casts  
+Absent  
+/hpf  
+Absent  
+Crystals  
+Absent  
+/hpf  
+Absent  
+Amorphous Material  
+Absent  
+
+------------- End Of Report -------------  
+
+DR.TEJASWINI DHOTE  
+M.D. Pathology  
+
+Dr. Sanjeev Shah  
+MD Path  
+
+Dr.Yash Shah  
+MD Path  
+
+This is an Electronically Authenticated Report.  
+# Referred Test  
+Page 19 of 19

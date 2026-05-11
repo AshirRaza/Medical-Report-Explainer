@@ -1,0 +1,36 @@
+{
+  "dataset": "pubmed_qa",
+  "config": "pqa_labeled",
+  "split": "train",
+  "seed": 42,
+  "num_samples": 100,
+  "top_k": 20,
+  "top_n": 5,
+  "max_no_rag_chars": 12000,
+  "chunk_size": 200,
+  "chunk_overlap": 50,
+  "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "ragas_on_mode": "rag_rerank",
+  "modes": {
+    "rag_rerank": {
+      "accuracy": 0.75,
+      "n_scored": 100,
+      "n_correct": 75
+    },
+    "rag_no_rerank": {
+      "accuracy": 0.78,
+      "n_scored": 100,
+      "n_correct": 78
+    },
+    "no_rag": {
+      "accuracy": 0.75,
+      "n_scored": 100,
+      "n_correct": 75
+    }
+  },
+  "ragas": {
+    "skipped": true,
+    "reason": "--skip-ragas"
+  }
+}

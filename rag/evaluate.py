@@ -49,6 +49,8 @@ def _retrieve_chunks(
     top_k: int,
     top_n: int,
     max_no_rag_chars: int,
+    chunk_size: int = 200,
+    chunk_overlap: int = 50,
 ) -> list[str]:
     text = doc.strip()
     if not text:
@@ -58,7 +60,7 @@ def _retrieve_chunks(
         body = text[:max_no_rag_chars]
         return [body] if body.strip() else []
 
-    chunks = chunk_text(text)
+    chunks = chunk_text(text, chunk_size=chunk_size, overlap=chunk_overlap)
     if not chunks:
         chunks = [text]
 
@@ -154,6 +156,8 @@ def run_rag_evaluation(
     top_k: int = 10,
     top_n: int = 3,
     max_no_rag_chars: int = 12000,
+    chunk_size: int = 200,
+    chunk_overlap: int = 50,
     skip_ragas: bool = False,
     ragas_on_mode: Mode = "rag_rerank",
     output_path: str = "Results/rag_pubmedqa_evaluation.json",
@@ -185,6 +189,8 @@ def run_rag_evaluation(
         "top_k": top_k,
         "top_n": top_n,
         "max_no_rag_chars": max_no_rag_chars,
+        "chunk_size": chunk_size,
+        "chunk_overlap": chunk_overlap,
         "embedding_model": EMBEDDING_MODEL,
         "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
         "ragas_on_mode": ragas_on_mode,
@@ -204,7 +210,10 @@ def run_rag_evaluation(
             if gold not in ("yes", "no", "maybe"):
                 continue
 
-            chunks = _retrieve_chunks(mode, question, doc, top_k, top_n, max_no_rag_chars)
+            chunks = _retrieve_chunks(
+                mode, question, doc, top_k, top_n, max_no_rag_chars,
+                chunk_size=chunk_size, chunk_overlap=chunk_overlap,
+            )
             answer = generate_pubmedqa_answer(question, chunks)
             pred = _extract_label(answer)
             scored += 1
@@ -278,6 +287,8 @@ if __name__ == "__main__":
     )
     parser.add_argument("--top-k", type=int, default=10, help="FAISS top-k.")
     parser.add_argument("--top-n", type=int, default=3, help="Chunks passed to the LLM.")
+    parser.add_argument("--chunk-size", type=int, default=200, help="Words per chunk.")
+    parser.add_argument("--chunk-overlap", type=int, default=50, help="Word overlap between chunks.")
     parser.add_argument(
         "--max-no-rag-chars",
         type=int,
@@ -310,6 +321,8 @@ if __name__ == "__main__":
         top_k=args.top_k,
         top_n=args.top_n,
         max_no_rag_chars=args.max_no_rag_chars,
+        chunk_size=args.chunk_size,
+        chunk_overlap=args.chunk_overlap,
         skip_ragas=args.skip_ragas,
         ragas_on_mode=args.ragas_on_mode,
         output_path=args.output,

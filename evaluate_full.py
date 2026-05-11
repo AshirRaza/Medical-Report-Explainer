@@ -13,6 +13,56 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+def _compute_deltas(merged: dict[str, Any]) -> dict[str, Any]:
+    """Derive improvement deltas across evaluation modes for the final report."""
+    deltas: dict[str, Any] = {}
+
+    rag = merged.get("rag")
+    if rag and isinstance(rag.get("modes"), dict):
+        modes = rag["modes"]
+        rr = modes.get("rag_rerank", {}).get("accuracy")
+        nr = modes.get("rag_no_rerank", {}).get("accuracy")
+        base = modes.get("no_rag", {}).get("accuracy")
+
+        rag_deltas: dict[str, Any] = {}
+        if rr is not None and base is not None:
+            rag_deltas["rag_rerank_vs_no_rag"] = round(rr - base, 4)
+        if nr is not None and base is not None:
+            rag_deltas["rag_no_rerank_vs_no_rag"] = round(nr - base, 4)
+        if rr is not None and nr is not None:
+            rag_deltas["rerank_vs_no_rerank"] = round(rr - nr, 4)
+
+        ragas = rag.get("ragas") or {}
+        if not ragas.get("skipped"):
+            faith = ragas.get("faithfulness")
+            recall = ragas.get("context_recall")
+            if faith is not None:
+                rag_deltas["faithfulness"] = round(faith, 4)
+            if recall is not None:
+                rag_deltas["context_recall"] = round(recall, 4)
+
+        deltas["rag"] = rag_deltas
+
+    ocr = merged.get("ocr")
+    if ocr and isinstance(ocr, dict):
+        ocr_deltas: dict[str, Any] = {}
+        qwen_cer = ocr.get("qwen_mean_cer")
+        paddle_cer = ocr.get("paddle_mean_cer")
+        if qwen_cer is not None and paddle_cer is not None and paddle_cer > 0:
+            ocr_deltas["cer_reduction_vs_paddle"] = round(
+                (paddle_cer - qwen_cer) / paddle_cer * 100, 2
+            )
+        qwen_wer = ocr.get("qwen_mean_wer")
+        paddle_wer = ocr.get("paddle_mean_wer")
+        if qwen_wer is not None and paddle_wer is not None and paddle_wer > 0:
+            ocr_deltas["wer_reduction_vs_paddle"] = round(
+                (paddle_wer - qwen_wer) / paddle_wer * 100, 2
+            )
+        deltas["ocr"] = ocr_deltas
+
+    return deltas
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Combined runner: optional MedOCR OCR + optional PubMedQA RAG benchmark."
@@ -99,6 +149,8 @@ def main() -> None:
             skip_ragas=args.skip_ragas,
             output_path=rag_path,
         )
+
+    merged["improvement_deltas"] = _compute_deltas(merged)
 
     out = args.output or str(
         Path("Results")

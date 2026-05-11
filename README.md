@@ -1,6 +1,6 @@
 # Medical-Report-Explainer
 
-Deep learning–oriented project for **medical lab report Q&A** (**OCR + RAG + Claude + `pipeline.py` + PubMedQA/RAGAS evaluation** are implemented; Gradio UI is planned next).
+Deep learning–oriented project for **medical lab report Q&A** (**OCR + RAG + Claude + `pipeline.py` + PubMedQA/RAGAS evaluation + real-PDF RAG vs no-RAG evaluation** are implemented; Gradio UI is planned next).
 
 ---
 
@@ -45,7 +45,13 @@ This section describes **what exists in the repository today** and how to use it
    - **RAGAS** (optional, default on): legacy **`faithfulness`** and **`context_recall`** from **`ragas`** are run on the rows produced under **`--ragas-on-mode`** (default **`rag_rerank`**) using the same **`ANTHROPIC_API_KEY`** / **`CLAUDE_MODEL`** as the rest of the app. Use **`--skip-ragas`** for accuracy-only runs.  
    - **`evaluate_full.py`** — runs OCR evaluation and/or PubMedQA RAG in one invocation and writes a **combined** JSON report plus the usual per-task JSON files under **`Results/`**.
 
-7. **Environment and safety**  
+7. **Full evaluation runner (Phase 8)**  
+   - **`evaluate_full.py`** — orchestrates optional OCR and/or PubMedQA RAG evaluation in a single run, saves per-task JSONs plus a combined report with **improvement deltas** (accuracy differences across modes, CER/WER reductions).
+
+8. **Real-PDF RAG evaluation**  
+   - **`evaluate_pdf.py`** — runs **25 targeted questions** against a real 19-page lab report (`Sample Reports/comprehensive_report.pdf`) in **RAG** vs **no-RAG** modes side-by-side. Caches OCR text for fast re-runs. Outputs a detailed JSON with both answers, chunks used, and timing per question.
+
+9. **Environment and safety**  
    - `.env.example` lists required variables **without secrets** (safe to commit).  
    - `.gitignore` includes `.env` so real API keys are not pushed to GitHub.  
    - `test_keys.py` loads `.env` and prints whether keys and model names are present (useful smoke test after setup).
@@ -143,10 +149,12 @@ Medical-Report-Explainer/
 ├── requirements.txt
 ├── pipeline.py          # MedicalReportPipeline: OCR -> RAG -> summary / Q&A
 ├── evaluate_full.py     # optional OCR + optional PubMedQA RAG, combined JSON
+├── evaluate_pdf.py      # RAG vs no-RAG side-by-side on real PDF reports
 ├── test_keys.py         # verify .env loading
 ├── Results/
 │   ├── ocr_evaluation_results.json        # baseline 50-sample run (archived)
 │   ├── ocr_evaluation_results_latest.json # run after OCR image-quality improvements
+│   ├── pdf_eval_report.json               # RAG vs no-RAG on comprehensive_report.pdf
 │   └── results_summary.txt
 ├── ocr/
 │   ├── __init__.py      # re-exports extract helpers
@@ -160,7 +168,9 @@ Medical-Report-Explainer/
 │   └── evaluate.py      # PubMedQA: 3 retrieval modes + accuracy + optional RAGAS
 ├── llm/
 │   └── generator.py     # Claude: generate_answer, generate_summary
-└── Sample Reports/      # optional: place sample PDFs here
+└── Sample Reports/
+    ├── comprehensive_report.pdf  # 19-page lab report for real-PDF evaluation
+    └── questions.json            # 25 targeted questions for evaluate_pdf.py
 ```
 
 ### Dependencies (high level)
@@ -221,6 +231,42 @@ Committed JSON under **`Results/`**:
 - **Yes / no / maybe** over a **single abstract** is often solvable from a **global** read; dense retrieval matters **more** on **long, noisy PDF lab reports** than on this Hugging Face slice.
 
 **Follow-ups (experiments, not stored in JSON):** raise **`--top-k` / `--top-n`**, tune **chunk size**, or add **hybrid retrieval / domain rerankers** to push **`rag_rerank`** above **`no_rag`** on PubMedQA; **evaluate on real PDFs** for product-level conclusions.
+
+### Real-PDF RAG evaluation (comprehensive_report.pdf)
+
+The PubMedQA benchmark uses short abstracts (~100-300 words) where the full text fits in a single context window, making RAG unnecessary. To demonstrate RAG's real value, `evaluate_pdf.py` runs **25 targeted questions** against a **19-page lab report** (`Sample Reports/comprehensive_report.pdf`) in two modes:
+
+- **RAG mode**: OCR → chunk (200-word / 50-overlap) → FAISS retrieve (top_k=10) → cross-encoder rerank (top_n=5) → Claude answer
+- **no-RAG mode**: OCR → truncate to first 12,000 characters → Claude answer
+
+**Document stats**: 35,091 characters, 5,327 words, 36 chunks. **no-RAG saw only 34.2%** of the full document (roughly pages 1–6 of 19).
+
+**Run the evaluation:**
+
+```powershell
+# First run (includes OCR, ~10-15 min):
+.\venv\Scripts\python evaluate_pdf.py --pdf "Sample Reports/comprehensive_report.pdf" --output Results/pdf_eval_report.json
+
+# Subsequent runs (skip OCR, ~5 min):
+.\venv\Scripts\python evaluate_pdf.py --pdf "Sample Reports/comprehensive_report.pdf" --skip-ocr --ocr-cache Results/comprehensive_report_ocr_text.txt --output Results/pdf_eval_report.json
+```
+
+**Results summary** (`Results/pdf_eval_report.json`):
+
+| Metric | RAG | no-RAG |
+|--------|-----|--------|
+| **Questions answered with data** | **~19/25 (76%)** | **~13/25 (52%)** |
+| **Clear wins** | **10** | **4** |
+| **Both failed** | 3 | 3 |
+| **Ties** | 8 | 8 |
+
+**RAG wins (10 questions):** Vitamin D (page 12), Vitamin B12 (page 13), homocysteine (page 10), kidney function (page 11), IgE (page 15), HIV/HBsAg (page 16), Hb electrophoresis (page 17), PSA (page 14), iron studies (page 9), microalbumin/diabetic nephropathy (page 7). All of these are on pages 7–19, which no-RAG could not see due to the 12k-character truncation.
+
+**no-RAG wins (4 questions):** cholesterol (page 3), blood group (page 2), ESR (page 1), CBC hemoglobin detail (page 1). These are all on early pages within the 12k window. RAG failed to retrieve the relevant chunks for these — the embedder ranked other chunks higher.
+
+**Both failed (3 questions):** liver enzymes SGPT/SGOT, electrolytes (sodium/potassium/chloride), and albumin/A/G ratio. These are on page 11 alongside other biochemistry results; the OCR chunks for that page were not well-formed enough for the embedder to match against the question.
+
+**Key takeaway:** On a real 19-page medical report, **RAG substantially outperforms no-RAG** (76% vs 52% answerability). The truncation limit forces no-RAG to be blind to ~66% of the document, while RAG retrieves relevant sections from any page. This confirms that chunked dense retrieval is critical for long-document medical report Q&A.
 
 ### Known limitations and next steps
 

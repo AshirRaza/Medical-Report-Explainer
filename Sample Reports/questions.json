@@ -1,0 +1,152 @@
+[
+  {
+    "id": "q01",
+    "question": "What is the patient's blood sugar level and is it normal?",
+    "expected_page": 4,
+    "category": "diabetes"
+  },
+  {
+    "id": "q02",
+    "question": "What is the HbA1c value and does it indicate diabetes?",
+    "expected_page": 5,
+    "category": "diabetes"
+  },
+  {
+    "id": "q03",
+    "question": "What are the cholesterol and triglyceride levels?",
+    "expected_page": 3,
+    "category": "lipid_profile"
+  },
+  {
+    "id": "q04",
+    "question": "Is the LDL cholesterol high and what is the LDL to HDL ratio?",
+    "expected_page": 3,
+    "category": "lipid_profile"
+  },
+  {
+    "id": "q05",
+    "question": "What is the hemoglobin level and is the CBC normal?",
+    "expected_page": 1,
+    "category": "cbc"
+  },
+  {
+    "id": "q06",
+    "question": "Is the white blood cell count within range?",
+    "expected_page": 1,
+    "category": "cbc"
+  },
+  {
+    "id": "q07",
+    "question": "What is the platelet count and MPV?",
+    "expected_page": 1,
+    "category": "cbc"
+  },
+  {
+    "id": "q08",
+    "question": "What is the thyroid function status? Are TSH, T3, and T4 normal?",
+    "expected_page": 6,
+    "category": "thyroid"
+  },
+  {
+    "id": "q09",
+    "question": "What is the Vitamin D level and is it deficient?",
+    "expected_page": 12,
+    "category": "vitamins"
+  },
+  {
+    "id": "q10",
+    "question": "What is the Vitamin B12 level and is it low?",
+    "expected_page": 13,
+    "category": "vitamins"
+  },
+  {
+    "id": "q11",
+    "question": "What is the homocysteine level and is it elevated?",
+    "expected_page": 10,
+    "category": "cardiovascular"
+  },
+  {
+    "id": "q12",
+    "question": "How are the kidney function tests? What are the creatinine and urea levels?",
+    "expected_page": 11,
+    "category": "kidney"
+  },
+  {
+    "id": "q13",
+    "question": "Are the liver enzymes SGPT and SGOT within normal range?",
+    "expected_page": 11,
+    "category": "liver"
+  },
+  {
+    "id": "q14",
+    "question": "What are the electrolyte levels - sodium, potassium, and chloride?",
+    "expected_page": 11,
+    "category": "electrolytes"
+  },
+  {
+    "id": "q15",
+    "question": "What is the IgE level and what could a high value mean?",
+    "expected_page": 15,
+    "category": "immunology"
+  },
+  {
+    "id": "q16",
+    "question": "What is the patient's blood group?",
+    "expected_page": 2,
+    "category": "blood_group"
+  },
+  {
+    "id": "q17",
+    "question": "Are the HIV and Hepatitis B tests negative?",
+    "expected_page": 16,
+    "category": "infectious"
+  },
+  {
+    "id": "q18",
+    "question": "What does the hemoglobin electrophoresis show? Is there thalassemia?",
+    "expected_page": 17,
+    "category": "hematology"
+  },
+  {
+    "id": "q19",
+    "question": "What is the PSA level and is the prostate health normal?",
+    "expected_page": 14,
+    "category": "prostate"
+  },
+  {
+    "id": "q20",
+    "question": "What does the urinalysis show? Is glucose present in the urine?",
+    "expected_page": 19,
+    "category": "urinalysis"
+  },
+  {
+    "id": "q21",
+    "question": "What are the iron studies results - iron, TIBC, and transferrin saturation?",
+    "expected_page": 9,
+    "category": "iron"
+  },
+  {
+    "id": "q22",
+    "question": "What is the ESR value and is there any sign of inflammation?",
+    "expected_page": 1,
+    "category": "inflammation"
+  },
+  {
+    "id": "q23",
+    "question": "What is the albumin level and the A/G ratio?",
+    "expected_page": 8,
+    "category": "protein"
+  },
+  {
+    "id": "q24",
+    "question": "Is there microalbumin in the urine? Does it suggest kidney damage from diabetes?",
+    "expected_page": 7,
+    "category": "diabetic_nephropathy"
+  },
+  {
+    "id": "q25",
+    "question": "Which test results are abnormal or outside the reference range?",
+    "expected_page": null,
+    "category": "overall_summary"
+  }
+]
