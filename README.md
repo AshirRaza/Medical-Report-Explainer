@@ -1,6 +1,6 @@
 # Medical-Report-Explainer
 
-Deep learning–oriented project for **medical lab report Q&A** (**OCR + RAG + Claude + `pipeline.py` + PubMedQA/RAGAS evaluation + real-PDF RAG vs no-RAG evaluation** are implemented; Gradio UI is planned next).
+Deep learning project for **medical lab report Q&A** — combines OCR, hybrid RAG (dense + sparse retrieval), a **fine-tuned cross-encoder reranker**, and Claude LLM generation with comprehensive evaluation.
 
 ---
 
@@ -23,20 +23,20 @@ This section describes **what exists in the repository today** and how to use it
      - **PaddleOCR baseline:** local PaddleOCR (PaddlePaddle + PaddleOCR stack on Windows).  
    - Results are written to JSON under `Results/` (e.g. `ocr_evaluation_results.json`, `ocr_evaluation_results_latest.json`) with mean metrics and a relative **CER reduction %** vs Paddle when both runs succeed.
 
-3. **RAG core (Phase 4) — chunk, embed, retrieve, rerank**  
-   - `rag/chunker.py` — `clean_text()` normalizes OCR text; `chunk_text()` builds overlapping **word** windows (default 200 words, 50 overlap).  
+3. **RAG core — hybrid retrieval + fine-tuned reranker**  
+   - `rag/chunker.py` — `clean_text()` normalizes OCR text; `clean_report_noise()` strips boilerplate (QR codes, signatures, page markers); `chunk_text_structured()` splits by medical section headings before sub-chunking (200 words, 50 overlap).  
    - `rag/embedder.py` — bi-encoder **`pritamdeka/S-PubMedBert-MS-MARCO`** with **L2-normalized** embeddings for cosine-as-dot-product search.  
-   - `rag/store.py` — **`faiss.IndexFlatIP`** build + **top-k** dense search over chunk embeddings.  
-   - `rag/reranker.py` — **`cross-encoder/ms-marco-MiniLM-L-6-v2`** cross-encoder to rerank candidates into **top-n** chunks for the LLM step.
+   - `rag/store.py` — **`faiss.IndexFlatIP`** dense search + **BM25Okapi** sparse keyword search + **hybrid fusion** (alpha-blended min-max normalized scores).  
+   - `rag/reranker.py` — **fine-tuned cross-encoder** (base: `ms-marco-MiniLM-L-6-v2`, 22M params) to rerank candidates into **top-n** chunks. Automatically loads fine-tuned weights from `models/finetuned-reranker/` if available.
 
 4. **LLM layer (Phase 5) — Anthropic Claude**  
    - `llm/generator.py` — **`generate_answer(query, context_chunks)`** answers patient questions using only the provided chunks (grounded, low temperature).  
    - **`generate_summary(full_text)`** produces a short patient-friendly overview from OCR text (first ~12k characters sent to control cost).  
    - Model id from **`CLAUDE_MODEL`** in `.env` (default `claude-sonnet-4-6`); requires **`ANTHROPIC_API_KEY`**.
 
-5. **End-to-end pipeline (Phase 6)**  
-   - **`pipeline.py`** — class **`MedicalReportPipeline`**: loads the OpenRouter Qwen OCR client once; **`process_pdf(pdf_path)`** runs OCR → **`clean_text`** / **`chunk_text`** → **`build_index`** → **`generate_summary`** on cleaned text (returns the summary string); **`answer(query)`** runs **`search_index`** → **`rerank`** → **`generate_answer`**, returning **`(answer, top_chunks)`**.  
-   - Constructor kwargs: **`top_k`**, **`top_n`**, **`ocr_dpi`** (default 300); **`quantize_ocr`** is accepted for API compatibility and ignored (local Qwen path not wired).  
+5. **End-to-end pipeline**  
+   - **`pipeline.py`** — class **`MedicalReportPipeline`**: loads the OpenRouter Qwen OCR client once; **`process_pdf(pdf_path)`** runs OCR → noise cleaning → structured chunking → build FAISS + BM25 indexes → **`generate_summary`**; **`answer(query)`** runs **hybrid search** → **rerank** (fine-tuned) → **`generate_answer`**, returning **`(answer, top_chunks)`**.  
+   - Constructor kwargs: **`top_k=20`**, **`top_n=5`**, **`ocr_dpi=300`**, **`hybrid_alpha=0.5`**.  
    - If OCR yields no usable text, the index is not built and **`answer`** raises until a successful **`process_pdf`**.
 
 6. **RAG evaluation (Phase 7) — PubMedQA + RAGAS**  
@@ -49,12 +49,19 @@ This section describes **what exists in the repository today** and how to use it
    - **`evaluate_full.py`** — orchestrates optional OCR and/or PubMedQA RAG evaluation in a single run, saves per-task JSONs plus a combined report with **improvement deltas** (accuracy differences across modes, CER/WER reductions).
 
 8. **Real-PDF RAG evaluation**  
-   - **`evaluate_pdf.py`** — runs **25 targeted questions** against a real 19-page lab report (`Sample Reports/comprehensive_report.pdf`) in **RAG** vs **no-RAG** modes side-by-side. Caches OCR text for fast re-runs. Outputs a detailed JSON with both answers, chunks used, and timing per question.
+   - **`evaluate_pdf.py`** — runs **25 targeted questions** against a real 19-page lab report (`Sample Reports/comprehensive_report.pdf`) in **RAG** vs **no-RAG** modes side-by-side. Uses hybrid retrieval + fine-tuned reranker. Caches OCR text for fast re-runs. Supports `--no-hybrid`, `--no-structured-chunking`, and configurable `--top-k` / `--hybrid-alpha` for ablation studies.
 
-9. **Environment and safety**  
-   - `.env.example` lists required variables **without secrets** (safe to commit).  
-   - `.gitignore` includes `.env` so real API keys are not pushed to GitHub.  
-   - `test_keys.py` loads `.env` and prints whether keys and model names are present (useful smoke test after setup).
+9. **Deep Learning: Cross-Encoder Fine-Tuning**  
+   - `rag/build_training_data.py` — generates labeled `(query, chunk, relevance)` training pairs from PDF evaluation results and PubMedQA.  
+   - `rag/finetune_reranker.py` — fine-tunes `cross-encoder/ms-marco-MiniLM-L-6-v2` (22M params) using binary cross-entropy loss with AdamW optimizer, warmup scheduling, and train/eval splits. Runs on CPU (~14 min) or GPU.  
+   - `rag/evaluate_reranker.py` — compares base vs fine-tuned model on Precision@k, Recall@k, and MAP.  
+   - Training data: 720 labeled pairs (360 positive, 360 negative) from PDF eval + PubMedQA.  
+   - Result: Precision@3 improved from **89.25% → 90.86%**, MAP from **97.00% → 97.31%**.
+
+10. **Environment and safety**  
+    - `.env.example` lists required variables **without secrets** (safe to commit).  
+    - `.gitignore` includes `.env` so real API keys are not pushed to GitHub.  
+    - `test_keys.py` loads `.env` and prints whether keys and model names are present (useful smoke test after setup).
 
 ### Prerequisites
 
@@ -139,7 +146,7 @@ Omit `--skip-ragas` to also run RAGAS **faithfulness** and **context_recall** on
 
 Use `--ocr-num-samples 20` (and optional `--ocr-no-paddle`) to include MedOCR in the same JSON. Default is **RAG only** with **10** PubMedQA examples; set `--rag-num-samples 0` and a positive OCR count to run OCR alone.
 
-### Project layout (relevant to current work)
+### Project layout
 
 ```
 Medical-Report-Explainer/
@@ -147,25 +154,35 @@ Medical-Report-Explainer/
 ├── .env.example         # template for env vars
 ├── .gitignore
 ├── requirements.txt
-├── pipeline.py          # MedicalReportPipeline: OCR -> RAG -> summary / Q&A
+├── pipeline.py          # MedicalReportPipeline: OCR -> hybrid RAG -> summary / Q&A
 ├── evaluate_full.py     # optional OCR + optional PubMedQA RAG, combined JSON
 ├── evaluate_pdf.py      # RAG vs no-RAG side-by-side on real PDF reports
 ├── test_keys.py         # verify .env loading
 ├── Results/
-│   ├── ocr_evaluation_results.json        # baseline 50-sample run (archived)
-│   ├── ocr_evaluation_results_latest.json # run after OCR image-quality improvements
-│   ├── pdf_eval_report.json               # RAG vs no-RAG on comprehensive_report.pdf
+│   ├── ocr_evaluation_results.json
+│   ├── ocr_evaluation_results_latest.json
+│   ├── pdf_eval_report.json               # v1 baseline RAG evaluation
+│   ├── pdf_eval_report_v2.json            # v2 with hybrid search + structured chunking
+│   ├── pdf_eval_report_v2_35k.json        # v2 with 35k no-RAG context (100% coverage)
+│   ├── reranker_eval.json                 # base vs fine-tuned reranker comparison
 │   └── results_summary.txt
 ├── ocr/
 │   ├── __init__.py      # re-exports extract helpers
 │   ├── extract.py       # PDF → images → OpenRouter Qwen OCR
 │   └── evaluate.py      # MedOCR CER/WER: Qwen vs PaddleOCR
 ├── rag/
-│   ├── chunker.py       # clean + overlapping word chunks
+│   ├── __init__.py
+│   ├── chunker.py       # clean + noise removal + structured chunking
 │   ├── embedder.py      # S-PubMedBert bi-encoder embeddings
-│   ├── store.py         # FAISS IndexFlatIP build + search
-│   ├── reranker.py      # MS MARCO cross-encoder rerank
-│   └── evaluate.py      # PubMedQA: 3 retrieval modes + accuracy + optional RAGAS
+│   ├── store.py         # FAISS + BM25 + hybrid search
+│   ├── reranker.py      # cross-encoder rerank (auto-loads fine-tuned weights)
+│   ├── evaluate.py      # PubMedQA: 3 retrieval modes + accuracy + optional RAGAS
+│   ├── build_training_data.py   # generate labeled pairs for fine-tuning
+│   ├── finetune_reranker.py     # DL training script (cross-encoder fine-tuning)
+│   ├── evaluate_reranker.py     # before/after reranker quality comparison
+│   └── training_data.json       # 720 labeled (query, chunk, label) pairs
+├── models/
+│   └── finetuned-reranker/      # fine-tuned cross-encoder weights (22M params)
 ├── llm/
 │   └── generator.py     # Claude: generate_answer, generate_summary
 └── Sample Reports/
@@ -175,7 +192,7 @@ Medical-Report-Explainer/
 
 ### Dependencies (high level)
 
-Core entries in `requirements.txt` include: `anthropic`, `datasets`, `faiss-cpu`, `gradio`, `jiwer`, `numpy`, `pdf2image`, `pillow`, `python-dotenv`, `ragas`, `sentence-transformers`, `torch`, `transformers`, plus **`paddleocr`** and **`paddlepaddle`** for the OCR baseline.
+Core entries in `requirements.txt` include: `accelerate`, `anthropic`, `datasets`, `faiss-cpu`, `gradio`, `jiwer`, `numpy`, `pdf2image`, `pillow`, `python-dotenv`, `ragas`, `rank-bm25`, `sentence-transformers`, `torch`, `transformers`, plus **`paddleocr`** and **`paddlepaddle`** for the OCR baseline.
 
 ### Evaluation notes (MedOCR)
 
@@ -234,47 +251,81 @@ Committed JSON under **`Results/`**:
 
 ### Real-PDF RAG evaluation (comprehensive_report.pdf)
 
-The PubMedQA benchmark uses short abstracts (~100-300 words) where the full text fits in a single context window, making RAG unnecessary. To demonstrate RAG's real value, `evaluate_pdf.py` runs **25 targeted questions** against a **19-page lab report** (`Sample Reports/comprehensive_report.pdf`) in two modes:
+The PubMedQA benchmark uses short abstracts where the full text fits in a single context window. To demonstrate RAG's real value, `evaluate_pdf.py` runs **25 targeted questions** against a **19-page lab report** in two modes side-by-side.
 
-- **RAG mode**: OCR → chunk (200-word / 50-overlap) → FAISS retrieve (top_k=10) → cross-encoder rerank (top_n=5) → Claude answer
-- **no-RAG mode**: OCR → truncate to first 12,000 characters → Claude answer
+**Pipeline (v2 — current):**
+- **RAG mode**: OCR → noise cleaning → structured chunking → hybrid search (FAISS + BM25, top_k=20) → fine-tuned cross-encoder rerank (top_n=5) → Claude answer
+- **no-RAG mode**: OCR → truncate to `max_no_rag_chars` → Claude answer
 
-**Document stats**: 35,091 characters, 5,327 words, 36 chunks. **no-RAG saw only 34.2%** of the full document (roughly pages 1–6 of 19).
+**Document stats**: ~33k characters, ~5,300 words, 42 structured chunks.
 
 **Run the evaluation:**
 
 ```powershell
-# First run (includes OCR, ~10-15 min):
-.\venv\Scripts\python evaluate_pdf.py --pdf "Sample Reports/comprehensive_report.pdf" --output Results/pdf_eval_report.json
+# With cached OCR text (fast, ~5 min):
+.\venv\Scripts\python evaluate_pdf.py --pdf "Sample Reports/comprehensive_report.pdf" --skip-ocr --ocr-cache "Results/comprehensive_report_ocr_text.txt" --output "Results/pdf_eval_report_v2.json"
 
-# Subsequent runs (skip OCR, ~5 min):
-.\venv\Scripts\python evaluate_pdf.py --pdf "Sample Reports/comprehensive_report.pdf" --skip-ocr --ocr-cache Results/comprehensive_report_ocr_text.txt --output Results/pdf_eval_report.json
+# Compare with old pipeline (ablation):
+.\venv\Scripts\python evaluate_pdf.py --pdf "Sample Reports/comprehensive_report.pdf" --skip-ocr --ocr-cache "Results/comprehensive_report_ocr_text.txt" --no-hybrid --no-structured-chunking --top-k 10 --output "Results/pdf_eval_report_baseline.json"
 ```
 
-**Results summary** (`Results/pdf_eval_report.json`):
+**Results comparison (v1 → v2):**
 
-| Metric | RAG | no-RAG |
-|--------|-----|--------|
-| **Questions answered with data** | **~19/25 (76%)** | **~13/25 (52%)** |
-| **Clear wins** | **10** | **4** |
-| **Both failed** | 3 | 3 |
-| **Ties** | 8 | 8 |
+| Metric | v1 (baseline) | v2 (hybrid + structured + noise clean) |
+|--------|--------------|----------------------------------------|
+| RAG correct answers | 18/25 (72%) | **23/25 (92%)** |
+| RAG "could not find" | 7/25 | **2/25** |
+| no-RAG correct (12k chars) | 13/25 (52%) | 15/25 (60%) |
 
-**RAG wins (10 questions):** Vitamin D (page 12), Vitamin B12 (page 13), homocysteine (page 10), kidney function (page 11), IgE (page 15), HIV/HBsAg (page 16), Hb electrophoresis (page 17), PSA (page 14), iron studies (page 9), microalbumin/diabetic nephropathy (page 7). All of these are on pages 7–19, which no-RAG could not see due to the 12k-character truncation.
+**v2 fixed 5 previously failing questions:** cholesterol/triglycerides, blood group, ESR, liver enzymes, and albumin/A-G ratio — all due to hybrid BM25 retrieval catching keyword matches that dense search alone missed.
 
-**no-RAG wins (4 questions):** cholesterol (page 3), blood group (page 2), ESR (page 1), CBC hemoglobin detail (page 1). These are all on early pages within the 12k window. RAG failed to retrieve the relevant chunks for these — the embedder ranked other chunks higher.
+**Full-context experiment** (`pdf_eval_report_v2_35k.json` — no-RAG with 35k chars = 100% document):
 
-**Both failed (3 questions):** liver enzymes SGPT/SGOT, electrolytes (sodium/potassium/chloride), and albumin/A/G ratio. These are on page 11 alongside other biochemistry results; the OCR chunks for that page were not well-formed enough for the embedder to match against the question.
+| Metric | RAG (v2) | no-RAG (12k) | no-RAG (35k) |
+|--------|----------|--------------|--------------|
+| Correct answers | 23/25 (92%) | 15/25 (60%) | **25/25 (100%)** |
+| Avg time/question | ~7s | ~5s | ~6s |
+| Input cost/question | ~5k chars | ~12k chars | ~33k chars |
 
-**Key takeaway:** On a real 19-page medical report, **RAG substantially outperforms no-RAG** (76% vs 52% answerability). The truncation limit forces no-RAG to be blind to ~66% of the document, while RAG retrieves relevant sections from any page. This confirms that chunked dense retrieval is critical for long-document medical report Q&A.
+**Key insight:** For short documents (~33k chars) that fit the LLM context window, full-context no-RAG achieves perfect accuracy. RAG's value for such documents is **cost efficiency (7x cheaper)** and **chunk traceability**. RAG becomes essential once documents exceed ~100k characters.
+
+### Cross-Encoder Fine-Tuning (Deep Learning Component)
+
+Fine-tuned the reranker to improve medical query-chunk relevance scoring.
+
+**Training pipeline:**
+
+```powershell
+# Step 1: Generate training data (720 labeled pairs from eval results + PubMedQA)
+.\venv\Scripts\python -m rag.build_training_data --pdf-eval "Results/pdf_eval_report_v2.json"
+
+# Step 2: Fine-tune (22M param cross-encoder, ~14 min on CPU)
+.\venv\Scripts\python -m rag.finetune_reranker --training-data rag/training_data.json --epochs 3
+
+# Step 3: Evaluate improvement
+.\venv\Scripts\python -m rag.evaluate_reranker --eval-data rag/training_data.json --finetuned models/finetuned-reranker
+```
+
+**Training details:**
+- Base model: `cross-encoder/ms-marco-MiniLM-L-6-v2` (22M parameters)
+- Loss: Binary cross-entropy
+- Optimizer: AdamW (lr=2e-5, warmup 10%)
+- Data: 720 pairs (612 train / 108 eval), 3 epochs, batch size 16
+- Hardware: CPU (~14 min) or GPU (~2 min)
+
+**Results** (`Results/reranker_eval.json`):
+
+| Metric | Base (MS-MARCO) | Fine-tuned | Delta |
+|--------|----------------|------------|-------|
+| Precision@3 | 89.25% | **90.86%** | +1.61% |
+| Recall@3 | 88.39% | **89.89%** | +1.50% |
+| MAP | 97.00% | **97.31%** | +0.31% |
+
+The fine-tuned model is automatically loaded by the pipeline when weights exist at `models/finetuned-reranker/`.
 
 ### Known limitations and next steps
 
 - **Gradio `app.py`** is **not implemented yet**; it would expose **`MedicalReportPipeline`** in a browser UI.  
 - PaddleOCR on Windows may need compatible Paddle versions and can be slow on CPU; first run downloads several model bundles under the user profile (e.g. `.paddlex`).
-
----
-
-## Original tagline
-
-Deep Learning Project
+- Fine-tuning gains are modest (+1.6% P@3) due to high baseline and small training set from a single report. More diverse reports would widen the gap.
+- The 2 remaining RAG failures (q14: electrolytes, q25: list all abnormals) are not retrieval problems — q14 is an LLM generation issue, q25 is architecturally impossible with 5 chunks.

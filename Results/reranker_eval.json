@@ -1,0 +1,21 @@
+{
+  "base": {
+    "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "precision@3": 0.8925,
+    "recall@3": 0.8839,
+    "MAP": 0.97,
+    "n_queries": 124
+  },
+  "finetuned": {
+    "model": "models/finetuned-reranker",
+    "precision@3": 0.9086,
+    "recall@3": 0.8989,
+    "MAP": 0.9731,
+    "n_queries": 124
+  },
+  "improvement": {
+    "precision@3_delta": 0.0161,
+    "recall@3_delta": 0.015,
+    "MAP_delta": 0.0031
+  }
+}
